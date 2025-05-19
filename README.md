@@ -60,26 +60,4 @@ delay_range: [1, 3]
 ## Usage
 
 Run the crawler:
-```bash
-python main.py
-```
 
-## Project Structure
-
-- `main.py`: Main crawler implementation
-- `parser_plugins/`: Website-specific parsing plugins
-- `utils/`: Utility functions for fetching, saving, and sanitizing
-- `tests/`: Test cases
-- `config.yaml`: Configuration file
-
-## Adding New Website Support
-
-1. Create a new parser plugin in `parser_plugins/`
-2. Implement required functions:
-   - `get_post_list_urls()`
-   - `parse_post_detail()`
-3. Add website configuration to `config.yaml`
-
-## License
-
-MIT License
