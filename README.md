@@ -1,5 +1,7 @@
 # 论坛内容采集框架
 
+> 最后更新时间：2024-03-21
+
 这是一个专门用于论坛内容采集的爬虫框架。本项目专注于高效地爬取多个网站的多个论坛板块，并将内容结构和相关媒体文件以markdown格式保存。
 
 ## 主要特性
@@ -26,25 +28,24 @@
 
 ## 环境要求
 
-- Python 3.7+
 - 依赖包：
-  ```
-  aiohttp      # 异步HTTP客户端
-  aiofiles     # 异步文件操作
-  beautifulsoup4  # HTML解析
-  markdownify  # HTML转Markdown
-  PyYAML      # 配置文件解析
-  tqdm        # 进度条显示
-  loguru      # 日志记录
-  ```
+```
+aiohttp # 异步HTTP客户端
+aiofiles # 异步文件操作
+beautifulsoup4 # HTML解析
+markdownify # HTML转Markdown
+PyYAML # 配置文件解析
+tqdm # 进度条显示
+loguru # 日志记录
+```
 
 ## 安装说明
 
 1. 克隆仓库
 2. 安装依赖：
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 ## 配置说明
 
@@ -52,29 +53,30 @@
 
 ```yaml
 websites:
-  - name: "网站A"          # 网站标识
+  - name: "网站A" # 网站标识
     parser: "example_site" # 解析器插件名称
     boards:
-      - name: "板块1"      # 板块名称
+      - name: "板块1" # 板块名称
         url: "https://example.com/board1"
-        save_dir: "boards/board1"  # 内容保存目录
-        start_page: 1     # 起始页码
-        end_page: 3      # 结束页码
-concurrency: 5           # 每个板块的最大并发请求数
-user_agent: "Googlebot/2.1 (+http://www.google.com/bot.html)"
-delay_range: [1, 3]      # 请求间随机延迟（秒）
+        save_dir: "boards/board1" # 内容保存目录
+        start_page: 1 # 起始页码
+        end_page: 3 # 结束页码
+        concurrency: 5 # 每个板块的最大并发请求数
+        user_agent: "Googlebot/2.1 (+http://www.google.com/bot.html)"
+        delay_range: [1, 3] # 请求间随机延迟（秒）
 ```
 
 ### 输出结构
 
 每个板块的内容按以下结构组织：
+
 ```
 boards/
-  board1/           # 板块保存目录
-    markdown/       # 帖子的Markdown文件
+  board1/ # 板块保存目录
+    markdown/ # 帖子的Markdown文件
       post-title-1.md
       post-title-2.md
-    data/          # 下载的媒体文件
+    data/ # 下载的媒体文件
       post-title-1/
         image1.jpg
         video1.mp4
@@ -107,8 +109,8 @@ boards/
 ## 添加新网站支持
 
 1. 在 `parser_plugins/` 中创建新的解析器，实现：
-   - `get_post_list_urls()`: 从板块页面提取帖子URL
-   - `parse_post_detail()`: 从帖子页面提取内容
+  - `get_post_list_urls()`: 从板块页面提取帖子URL
+  - `parse_post_detail()`: 从帖子页面提取内容
 2. 在 `config.yaml` 中添加网站配置
 
 ## 使用方法
