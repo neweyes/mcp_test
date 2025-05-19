@@ -1,0 +1,7 @@
+aiohttp
+aiofiles
+beautifulsoup4
+markdownify
+PyYAML
+tqdm
+loguru

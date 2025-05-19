@@ -1,0 +1,18 @@
+websites:
+  - name: "网站A"
+    parser: "example_site"
+    boards:
+      - name: "板块1"
+        url: "https://example.com/board1"
+        save_dir: "boards/board1"
+        start_page: 1
+        end_page: 3
+      - name: "板块2"
+        url: "https://example.com/board2"
+        save_dir: "boards/board2"
+        start_page: 1
+        end_page: 2
+  # 可继续添加更多网站
+concurrency: 5
+user_agent: "Googlebot/2.1 (+http://www.google.com/bot.html)"
+delay_range: [1, 3]
