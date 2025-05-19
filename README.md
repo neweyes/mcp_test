@@ -4,20 +4,19 @@
 
 本项目是一个可扩展的多站点多板块爬虫，支持抓取指定网站的帖子内容（含多页回复），将帖子内容、图片、视频、音频、链接等保存为本地markdown文档和资源文件夹。支持多板块、并发配置、UA伪装、断点下载、插件式解析。
 
-## 主要功能
+### 主要功能
 - 支持多网站、多板块配置，互不影响
-- 支持多种内容类型：文字、图片、视频、音频、链接
-- 支持多页回复、回复的回复
-- markdown内容和资源分开存储，markdown在markdown目录，资源在data目录
+- 支持插件式解析，适配不同网站结构
+- 支持抓取帖子内容、图片、视频、音频、链接，及多页回复
+- markdown内容和资源分开存储，markdown在 markdown 目录下，资源在 data 目录下
 - 图片、视频、音频等资源断点下载，已存在则跳过
-- 支持指定抓取板块的起止页
-- 支持每个板块独立并发配置
-- 支持伪装成搜索引擎UA，防止反爬
-- 插件式解析，支持随时扩展不同网站的抓取逻辑
-- 进度条显示总进度、每个帖子抓取和下载进度
-- 完整依赖、配置、文档、测试
+- 支持并发配置，板块间互不影响
+- 支持伪装为搜索引擎UA，防止反爬
+- 支持进度条显示抓取进度
+- 完整测试用例，易于扩展
 
 ## 目录结构
+
 ```
 crawl-sitepage/
 ├── main.py                # 主程序入口
@@ -35,12 +34,15 @@ crawl-sitepage/
 ```
 
 ## 安装依赖
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ## 配置说明
+
 编辑 `config.yaml`，示例：
+
 ```yaml
 websites:
   - name: "网站A"
@@ -60,10 +62,12 @@ concurrency: 5
 user_agent: "Googlebot/2.1 (+http://www.google.com/bot.html)"
 delay_range: [1, 3]
 ```
+
 - `parser` 字段指定解析插件（位于 parser_plugins/ 下）。
 - `start_page`/`end_page` 支持指定抓取的起止页。
 
 ## 运行
+
 ```bash
 python main.py
 ```
@@ -73,6 +77,7 @@ python main.py
 2. 在 `config.yaml` 的 `parser` 字段指定为你的插件名。
 
 ## 测试
+
 见 `tests/` 目录，运行：
 ```bash
 pytest tests/
@@ -84,4 +89,5 @@ pytest tests/
 
 ## 其他
 - 支持多板块、分目录保存、并发可调、UA伪装。
-- markdown内容和资源分开存储，markdown在 markdown 目录下，资源在 data 目录下。
+- 进度条显示各板块、帖子、资源抓取进度。
+- 插件式解析，易于扩展。
